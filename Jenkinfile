@@ -1,7 +1,7 @@
 pipeline{
     agent {label 'OPENJDK-11-2'}
     triggers{
-        pollscm('* * * * *')
+        pollSCM('* * * * *')
     }
  stages{
     stage('pull from vcs') {
@@ -11,7 +11,7 @@ pipeline{
         }
 
     }
-    stage('Gradle build'){
+    stage('build'){
         steps{
             sh 'mvn package'
         }
