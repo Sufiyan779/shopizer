@@ -1,0 +1,22 @@
+pipeline{
+    agent {label 'OPENJDK-11-2'}
+triggers
+{
+    pollSCM('30 22 * * * ')
+}
+stages{
+    stage ('poll scm from vcs'){
+        steps{
+            git url: 'https://github.com/Sufiyan779/shopizer.git'
+            branch:  'SPRINT_1_REL'
+
+        }
+    }
+    stage(build){
+        steps{
+            sh 'mvn package'
+        }
+    }
+}
+
+}
